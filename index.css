@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --background: #f2efe7;
+  --foreground: #17150f;
+  --card: #f8f6f0;
+  --card-foreground: #17150f;
+  --primary: #17150f;
+  --primary-foreground: #f8f6f0;
+  --secondary: #e6e1d4;
+  --secondary-foreground: #3b382e;
+  --muted: #e9e5da;
+  --muted-foreground: #6b6659;
+  --accent: #9c3b1b;
+  --accent-foreground: #f8f6f0;
+  --border: #d4cec0;
+  --ring: #9c3b1b;
+  --radius: 2px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --radius-sm: var(--radius);
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-sans: 'Archivo', system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    /* faint paper tooth so the ground reads as stock, not flat grey */
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(23, 21, 15, 0.05) 1px,
+      transparent 1px
+    );
+    background-size: 4px 4px;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  * {
+    scrollbar-width: none;
+  }
+  *::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 42s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
